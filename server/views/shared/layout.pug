@@ -1,0 +1,34 @@
+doctype
+html
+head
+	title Title
+body
+	header.nav
+	.container
+		.navbar-header
+			a.navbar-brand(href="/") Animal Hotel
+		.navbar-collapse.collapse
+			ul.nav.navbar-nav
+				li
+					a(href="/") Home
+				if (currentUser)
+					li
+						a(href="/profile") #{currentUser.username}
+					li
+						a(href="/logout") Logout
+				if (!currentUser)
+					li
+						a(href="/register") Register
+					li
+						a(href="/login") Login
+
+	.container
+		if (errorMessage)
+			.alert.alert-danger #{errorMessage}
+
+		block main-content
+
+	footer
+		p footeeeer
+
+	include scripts
