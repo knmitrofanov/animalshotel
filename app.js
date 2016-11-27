@@ -1,14 +1,14 @@
-let express = require('express');
+const express = require("express");
+const config = require("./server/config");
+// const userValidator = require("./server/utilities/user-validator");
 
-let env = process.env.NODE_ENV || 'development';
+const app = express();
+const rootPath = config.rootPath;
+config.setupConfigurations(app, rootPath);
 
-let app = express();
-let config = require('./server/config/config')[env];
+const http = require("http").Server(app);
 
-require('./server/config/express')(app, config);
-require('./server/config/mongoose')(config);
-require('./server/config/passport')();
-require('./server/config/routes')(app);
+//require("./server/routers")(app, config, userValidator);
 
 app.listen(config.port);
 console.log("Server running on port: " + config.port);

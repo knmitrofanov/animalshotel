@@ -1,7 +1,9 @@
-let UsersController = require('./UsersController'),
-    HomeController = require('./HomeController');
+"use strict";
 
-module.exports = {
-    users: UsersController,
-    home: HomeController
+const controllers = {
+    home: require("./home-controller"),
+    auth: require("./auth-controller"),
+    user: require("./user-controller")
 };
+
+module.exports = controllers;

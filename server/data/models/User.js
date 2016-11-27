@@ -1,37 +1,38 @@
-let mongoose = require('mongoose'),
+"use strict";
+
+const mongoose = require('mongoose'),
     encryption = require('../../utilities/encryption');
 
-let requiredMessage = '{PATH} is required';
-let defaultAvatar = 'https://ninjageisha.files.wordpress.com/2012/08/ninja-tadaa.jpg';
+const requiredMessage = '{PATH} is required';
+const defaultAvatar = 'http://www.luxepethotels.com/wp-content/uploads/2013/10/Indoor-play-time-at-Luxe-Pet-Hotels-4.jpg';
 
-module.exports.init = function() {
-    let userSchema = mongoose.Schema({
-        username: { type: String, required: requiredMessage, unique: true },
-        salt: String,
-        hashPass: String,
-        firstName: { type: String, required: requiredMessage},
-        lastName: { type: String, required: requiredMessage},
-        phoneNumber: String,
-        email: { type: String, required: requiredMessage},
-        initiatives: [{
-            initiative: String,
-            season: String
-        }],
-        avatar: { type: String, default: defaultAvatar }
-    });
+const Schema = mongoose.Schema;
 
-    userSchema.method({
-        authenticate: function(password) {
-            if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
-                return true;
-            }
-            else {
-                return false;
-            }
+const userSchema = mongoose.Schema({
+    username: { type: String, unique: true, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    hashPass: { type: String, required: true },
+    salt: { type: String, required: true },
+    phoneNumber: String,
+    email: { type: String, required: true},
+    initiatives: [{
+        initiative: String,
+        season: String
+    }],
+    avatar: { type: String, default: defaultAvatar }
+});
+
+userSchema.method({
+    authenticate: function(password) {
+        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
+            return true;
         }
-    });
+        else {
+            return false;
+        }
+    }
+});
 
-    let User = mongoose.model('User', userSchema);
-};
-
-
+const User = mongoose.model("user", userSchema);
+module.exports = User;
