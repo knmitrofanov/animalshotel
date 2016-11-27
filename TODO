@@ -6,7 +6,7 @@ change HomeController/UserController to home-controller/user-controller if neede
 rename dog-models to pet/animel
 check if there is register data validation
 checkIf	there is a files/folders for remove
-
+user.profile
 
 
 
