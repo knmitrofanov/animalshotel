@@ -14,7 +14,7 @@ module.exports = {
         
     },
     initializePublicFilesPath(app, rootPath){
-        app.use(express.static(path.join(rootPath, "public")));
+        app.use(express.static(path.join(rootPath, "client")));
     },
     initializeMiddlewares: function(app){
         app.use(cookieParser());

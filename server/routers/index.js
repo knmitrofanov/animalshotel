@@ -10,10 +10,10 @@ module.exports = {
         homeRouter.initializeHomeRoutes(app, controllers);
         userRouter.initializeUserRoutes(app, controllers);
 
-        app.all("*", (req, res) => {
-            res.status(404);
-            res.render("default-not-found");
-            res.end();
-        });
+        // app.all("*", (req, res) => {
+        //     res.status(404);
+        //     res.render("default-not-found");
+        //     res.end();
+        // });
     }
 };
