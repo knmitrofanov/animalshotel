@@ -31,6 +31,7 @@ module.exports = function (models) {
 				let hotel = new Hotel ({
 					name: data.name,
 					owner: data.owner,
+                    address: data.address
 				});
 
 				hotel.save((err, createdHotel) => {

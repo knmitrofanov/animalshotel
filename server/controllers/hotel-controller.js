@@ -4,7 +4,10 @@ const HotelData = require("../data").hotel;
 const UserData = require("../data").users;
 
 function loadRegisterPage(req, res) {
-	res.render("hotel/register");
+	var user = req.user;
+	res.render("hotel/register", {
+		user: user
+	});
 }
 
 function registerHotel(req, res) {
@@ -13,7 +16,8 @@ function registerHotel(req, res) {
 		
 	let newHotelData = {
 		name: body.name,
-		owner: body.owner,
+		owner: user._id,
+        address: body.address
 	};
 
 	HotelData
@@ -29,8 +33,6 @@ function registerHotel(req, res) {
 		});
 	//TODO: Update user (add new hotel to his list hotels)
 }
-
-
 
 module.exports = { 
 	loadRegisterPage, 
