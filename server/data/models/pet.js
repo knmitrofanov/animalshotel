@@ -1,10 +1,9 @@
 "use strict";
 
 const mongoose = require('mongoose');
+const breeds = require("./breeds");
 
 const Schema = mongoose.Schema;
-
-const breeds = require("./breeds");
 
 const petSchema = mongoose.Schema({
     name: { type: String, required: true },
