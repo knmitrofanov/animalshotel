@@ -20,7 +20,8 @@ const userSchema = mongoose.Schema({
         initiative: String,
         season: String
     }],
-    avatar: { type: String, default: defaultAvatar }
+    avatar: { type: String, default: defaultAvatar },
+    pets: []
 });
 
 userSchema.method({

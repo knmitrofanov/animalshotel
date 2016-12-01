@@ -1,0 +1,83 @@
+.flex-wrapper{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+  font-weight: bold;
+  text-align: center;
+}
+
+.flex-auto{
+  flex: 1 auto;
+}
+
+button.btn-margin{
+  margin:5px 10px;
+}
+
+button.flex-auto,
+button.flex-auto:active,
+button.flex-auto:focus,
+button.flex-auto:hover,
+button.flex-auto:focus:hover{
+  color:white;
+}
+
+button.flex-auto{
+  background-color: #79c700;
+  border-color: #507b0d;
+}
+
+button.flex-auto:hover{
+  background-color: #72b708;
+  border-color:#416706;
+}
+
+button.flex-auto:hover:focus{
+  background-color: #507b0d;
+  border-color:#3f610b;
+}
+
+button.flex-auto.active,
+button.flex-auto:active,
+button.flex-auto.active:hover{
+  background-color:#31b0d5;
+  border-color:#1b6d85
+}
+
+button.flex-auto.active:hover{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+button.flex-auto:active{
+  background-color:#31b0d5;
+  border-color:#269abc
+}
+
+button.flex-auto:active:hover,
+button.flex-auto.active:hover,
+button.flex-auto:active:focus{
+  background-color:#269abc;
+  border-color:#1b6d85
+}
+
+/* center selected option, use this*/
+.bootstrap-select.btn-group .dropdown-menu li > a {
+    text-align: center;
+}
+/* center selected option, use this*/
+.bootstrap-select.btn-group .btn .filter-option {
+    text-align: center; /* to override text-align: left; */
+}
+
+div .btn-group.bootstrap-select.form-control .btn.dropdown-toggle.btn-default{
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}

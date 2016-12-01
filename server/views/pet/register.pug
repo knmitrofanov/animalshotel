@@ -1,0 +1,76 @@
+extends ../shared/layout
+
+block main-content
+	form(method="post")
+		label(for="name") Pet name
+		input(id="name" class="form-control" type="name" name="name" placeholder="Pet Name" value="Tobi" required)
+		br
+		
+		label(for="weight") Weight
+		input(id="weight" class="form-control" type="number" name="weight" placeholder="Weight (approximate)" value=7.5 required)
+		br
+		
+		label(for="age") Age
+		input(id="age" class="form-control" type="number" name="age" placeholder="Age" value="0.33" required)
+		br
+		
+		label(for="sex") Sex
+		input(type="hidden" id="sex" name="sex" value="male" required)
+		.flex-wrapper(role='sex', aria-label='...')
+			button.btn.btn-margin.pets-sex.pets-sex-active.active.flex-auto(type="button" value="male") Male
+			button.btn.btn-margin.pets-sex.flex-auto(type="button" value="female") Female
+		
+		label(for="breed") Select breed
+		.flex-wrapper(role='group', aria-label='...')
+			button.btn.btn-margin.pets-species.pets-species-active.active.flex-auto(type="button" value="all" name="YogaSpaceAccommodation") All
+			each breed in breeds.petsSpecies
+				button.btn.btn-margin.pets-species.flex-auto(type="button" value=breed)=breed
+		br
+		div(style="width:80%; margin:auto;")
+			select.form-control.selectpicker#breed-search(data-live-search="true",data-width="100%", data-size="10")
+		input(type="hidden" id="breed" name="breed" value="" required)
+		input(type="hidden" id="species" name="species" value="" required)
+		br
+		//- TODO: add ageIsInMonts
+		//- nav.navbar.navbar-default
+		//- 	.container-fluid
+		//- 		// Brand and toggle get grouped for better mobile display
+		//- 		.navbar-header
+		//- 			button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+		//- 				span.sr-only Toggle navigation
+		//- 				span.icon-bar
+		//- 				span.icon-bar
+		//- 				span.icon-bar
+		//- 			a.navbar-brand(href='#') Brand
+		//- 		// Collect the nav links, forms, and other content for toggling
+		//- 		#bs-example-navbar-collapse-1.collapse.navbar-collapse
+		//- 			ul.nav.navbar-nav
+		//- 				li
+		//- 					a.pets-species()| Cat 
+		//- 						span.sr-only (current)
+		//- 				li
+		//- 					a.pets-species() Dog
+		//- 			form.navbar-form.navbar-right
+		//- 				.form-group
+		//- 					input.form-control(type='text', placeholder='Search')
+		//- 				button.btn.btn-default(type='submit') Submit
+		//- 			ul.nav.navbar-nav.navbar-right
+		//- 				li
+		//- 					a(href='#') Link
+		//- 				li.dropdown
+		//- 					a#dropdownID.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+		//- 						| Dropdown 
+		//- 						span.caret
+		//- 					ul.dropdown-menu
+		//- 						li
+		//- 							a() Action
+		//- 						li
+		//- 							a() Another action
+		//- 						li
+		//- 							a() Something else here
+		//- 						li.divider(role='separator')
+		//- 						li
+		//- 							a() Separated link
+		//- 		// /.navbar-collapse
+		//- 	// /.container-fluid
+		input(type="submit" class="btn btn-lg" value="Register new pet")
