@@ -1,0 +1,19 @@
+extends ../shared/layout
+
+block main-content
+
+    div
+    h1 Profile
+    ul.list-group
+        li.list-group-item.active Username: 
+            span= user.username
+        li.list-group-item First name: 
+            span= user.firstName
+        li.list-group-item Last name: 
+            span= user.lastName
+        li.list-group-item Email: 
+            span= user.email
+        li.list-group-item Phone number: 
+            span= user.phoneNumber
+        li.list-group-item Avatar: 
+            span= user.avatar

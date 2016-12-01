@@ -2,6 +2,6 @@
 
 module.exports = {
     initializeUserRoutes: function(app, controllers){
-        // app.post("/user/???", controllers.controllerName.func);
+        app.get("/auth/profile", controllers.user.getProfile);
     }
 };
