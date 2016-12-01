@@ -1,0 +1,13 @@
+extends ../shared/layout
+
+block main-content
+	form(method="post")
+		label(for="name") Hotel name
+		input(id="name" class="form-control" type="name" name="name" placeholder="Hotel Name")
+		br
+		
+		label(for="owner") Owner
+		input(id="owner" class="form-control" type="name" name="owner" placeholder="Hotel owner")
+		br
+        
+		input(type="submit" class="btn btn-lg" value="Register new hotel")
