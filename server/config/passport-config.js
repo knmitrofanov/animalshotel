@@ -11,7 +11,7 @@ module.exports = {
             new LocalStrategy(
                 (username, password, done) => {
                     UsersData
-                        .getUserByUsername(username)
+                        .getByUsername(username)
                         .then((resultUser, err) => {
                             if (err) {
                                 return done(err);
@@ -32,7 +32,7 @@ module.exports = {
     },
     setDeserializationProcedure: function(){
         passport.deserializeUser((id, done) => {
-            UsersData.getUserById(id)
+            UsersData.getById(id)
                 .then((resultUser, err) =>{
                     done(err, resultUser);
                 });

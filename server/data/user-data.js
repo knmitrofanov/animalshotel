@@ -5,7 +5,7 @@ module.exports = function(models) {
 	let User = models.user
 
 	return {
-		getUserById(id) {
+		getById(id) {
 			return new Promise(function(resolve, reject) {
 				User.findOne({ "_id": id }, function(err, result) {
 					if (err) {
@@ -16,7 +16,7 @@ module.exports = function(models) {
 				});
 			});
 		},
-		getUserByUsername(username) {
+		getByUsername(username) {
 			return new Promise(function(resolve, reject) {
 				User.findOne({ "username": username }, function(err, result) {
 					if (err) {
@@ -27,7 +27,7 @@ module.exports = function(models) {
 				});
 			});
 		},
-		getAllUsers() {
+		getAll() {
 			return new Promise(function(resolve, reject) {
 				User
 					.find(function(err, result) {
@@ -38,7 +38,7 @@ module.exports = function(models) {
 					});
 			});
 		},
-		createUser(newUserData) {
+		create(newUserData) {
 			return new Promise((resolve, reject) => {
 				let user = new User ({
 					username: newUserData.username,
@@ -61,7 +61,7 @@ module.exports = function(models) {
 				});
 			});
 		},
-		// updateUser(id, update, options) {
+		// update(id, update, options) {
 		//     return new Promise((resolve, reject) => {
 		//         User.findOneAndUpdate({ "_id": id }, update,
 		//             (err, user) => {

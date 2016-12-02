@@ -5,7 +5,7 @@ module.exports = function(models) {
 	let Service = models.service
 
 	return {
-		getServiceById(id) {
+		getById(id) {
 			return new Promise(function(resolve, reject) {
 				Service.findOne({ "_id": id }, function(err, result) {
 					if (err) {
@@ -16,7 +16,7 @@ module.exports = function(models) {
 				});
 			});
 		},
-		getAllServices() {
+		getAll() {
 			return new Promise(function(resolve, reject) {
 				Service.find(function(err, result) {
 						if (err) {
@@ -26,7 +26,7 @@ module.exports = function(models) {
 					});
 			});
 		},
-		createService(data) {
+		create(data) {
 			return new Promise((resolve, reject) => {
 				let service = new Service ({
 					name: data.name,

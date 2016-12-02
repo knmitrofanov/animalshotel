@@ -40,7 +40,7 @@ function registerHotel(req, res) {
     };
 
     HotelData
-        .createHotel(newHotelData)
+        .create(newHotelData)
         .then(() => {
             res.redirect("/");
         })
@@ -68,7 +68,7 @@ function registerService(req, res) {
 	};
 
 	ServiceData
-		.createService(newServiceData)
+		.create(newServiceData)
 		.then(() => {
 			//TODO:redirect somewhere
 			res.send(JSON.stringify(newServiceData));

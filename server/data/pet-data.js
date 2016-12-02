@@ -8,7 +8,7 @@ module.exports = function(models) {
 		breeds(){
 			return Pet.breedsData;
 		},
-		getPetById(id) {
+		getById(id) {
 			return new Promise(function(resolve, reject) {
 				Pet.findOne({ "_id": id }, function(err, result) {
 					if (err) {
@@ -41,7 +41,7 @@ module.exports = function(models) {
 		// 		});
 		// 	});
 		// },
-		getAllPets() {
+		getPets() {
 			return new Promise(function(resolve, reject) {
 				Pet
 					.find(function(err, result) {
@@ -52,7 +52,7 @@ module.exports = function(models) {
 					});
 			});
 		},
-		createPet(data) {
+		create(data) {
 			return new Promise((resolve, reject) => {
 				let pet = new Pet ({
 					name: data.name,
@@ -73,7 +73,7 @@ module.exports = function(models) {
 				});
 			});
 		},
-		// updateUser(id, update, options) {
+		// update(id, update, options) {
 		//     return new Promise((resolve, reject) => {
 		//         User.findOneAndUpdate({ "_id": id }, update,
 		//             (err, user) => {

@@ -20,7 +20,7 @@ function logoutUser(req, res) {
 function registerUser(req, res) {
 	const body = req.body;
 	UserData
-		.getUserByUsername(body.username)
+		.getByUsername(body.username)
 		.then(foundUser => {
 			if (!foundUser) {
 				let salt = encryption.generateSalt();
@@ -37,7 +37,7 @@ function registerUser(req, res) {
 				};
 
 				UserData
-					.createUser(newUserData)
+					.create(newUserData)
 					.then(() => res.redirect("/auth/login"))
 					.catch(() => {
 						res.status(500);

@@ -33,7 +33,7 @@ function registerPet(req, res) {
 	};
 
 	PetData
-		.createPet(newPetData)
+		.create(newPetData)
 		.then(() => {
 			//TODO:redirect somewhere
 			res.send(JSON.stringify(newPetData));
