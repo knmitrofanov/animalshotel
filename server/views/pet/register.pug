@@ -1,7 +1,7 @@
 extends ../shared/layout
 
 block main-content
-	form(method="post")
+	form#pet-register(method="post")
 		label(for="name") Pet name
 		input(id="name" class="form-control" type="name" name="name" placeholder="Pet Name" value="Tobi" required)
 		br
@@ -22,7 +22,7 @@ block main-content
 		
 		label(for="breed") Select breed
 		.flex-wrapper(role='group', aria-label='...')
-			button.btn.btn-margin.pets-species.pets-species-active.active.flex-auto(type="button" value="all" name="YogaSpaceAccommodation") All
+			button.btn.btn-margin.pets-species.pets-species-active.active.flex-auto(type="button" value="all" name="") all
 			each breed in breeds.petsSpecies
 				button.btn.btn-margin.pets-species.flex-auto(type="button" value=breed)=breed
 		br

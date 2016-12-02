@@ -1,7 +1,7 @@
 extends ../shared/layout
 
 block main-content
-	form(method="post")
+	form#hotel-register(method="post")
 		label(for="name") Hotel name
 		input(id="name" class="form-control" type="name" name="name" placeholder="Hotel Name")
 		br
@@ -9,5 +9,16 @@ block main-content
 		label(for="address") Address
 		input(id="address" class="form-control" type="name" name="address" placeholder="Hotel address")
 		br
+		
+		label(for="phoneNumber") Address
+		input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="Phone Number" pattern=/^(0[1-9]|1[012])\-(19|20)\d{2}$/)
+		br
+		
+		label(for="species") Select breed
+		.flex-wrapper(role='group', aria-label='...')
+			each breed in breeds.petsSpecies
+				button.btn.btn-margin.pets-species.flex-auto(type="button" value=breed)=breed		
+		input(type="hidden" id="species" name="species" value="dogs" required)
+		
 
 		input(type="submit" class="btn btn-lg" value="Register new hotel")

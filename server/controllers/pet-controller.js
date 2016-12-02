@@ -5,6 +5,9 @@ const UserData = require("../data").users;
 const breedsData = require("../data/models/breeds");
 
 function loadRegisterPage(req, res) {
+	if(!req.isAuthenticated()){
+		return res.redirect("../auth/login");
+	}
 	var user = req.user;
 	res.render("pet/register", {
 		breeds: breedsData, 
@@ -13,6 +16,9 @@ function loadRegisterPage(req, res) {
 }
 
 function registerPet(req, res) {
+	if(!req.isAuthenticated()){
+		return res.redirect("../auth/login");
+	}
 	const body = req.body;
 	var user = req.user;
 		
@@ -40,8 +46,6 @@ function registerPet(req, res) {
 	//TODO: Update user (add new pet to his list pets)
 
 }
-
-
 
 module.exports = { 
 	loadRegisterPage, 

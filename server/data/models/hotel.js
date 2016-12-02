@@ -9,7 +9,7 @@ const hotelSchema = mongoose.Schema({
     name: { type: String, required: true },
     owner: { type: String, required: true },
     address: {type: String, required: true},
-    telephone: {type: String, required: true},
+    phoneNumber: {type: String, required: true},
     species: { type: String , enum: breeds.petsSpecies, require: true },
     services: []
 });
