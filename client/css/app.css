@@ -81,3 +81,7 @@ div .btn-group.bootstrap-select.form-control .btn.dropdown-toggle.btn-default{
     background-color: #5bc0de;
     border-color: #46b8da;
 }
+
+.flex{
+  display: flex;
+}

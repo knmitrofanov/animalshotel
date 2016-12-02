@@ -22,7 +22,13 @@ chengeBtnActive("pets-species", updateBreedsSearch, "#breed-search");
 chengeBtnActive("pets-sex");
 
 $('#breed-search').change(function () {
-    $('#breed').val($(this).find("option:selected").val());
+    var currSelected = $(this).find("option:selected");
+    var currSelectedSpecie = currSelected.attr("data-tokens");
+    var currSelectedBreed = currSelected.val();
+
+    $('#species').val(currSelectedSpecie);
+    $('#breed').val(currSelectedBreed);
+    $("#breed-image").attr("src", breeds[currSelectedSpecie][currSelectedBreed].imgUrl);
 })
 
 $('.pets-sex').click(function () {
@@ -33,8 +39,8 @@ $('.pets-sex').click(function () {
 function addBreedsToBreedsSearch(id, items, type){
     $.each(items, function (i, item) {
         $('#' + id).append($('<option>', { 
-            value: item,
-            text : item,
+            value: i,
+            text : item.name,
             "data-tokens": type
         }));
     })
@@ -52,9 +58,14 @@ function updateBreedsSearch(type){
     }
     // $("#breed-search option:first").attr("selected", true);
     // $(".btn-group.bootstrap-select.form-control.dropup .dropdown-menu.open .dropdown-menu.inner:first").addClass("selected active");
-    $(".selectpicker").selectpicker("refresh");    
-    $('#breed').val($("select#breed-search.form-control.selectpicker").find("option:selected").val());
-    $('#species').val($("select#breed-search.form-control.selectpicker").find("option:selected").attr("data-tokens"));
+    $(".selectpicker").selectpicker("refresh");
+    var currSelected = $("select#breed-search.form-control.selectpicker").find("option:selected");
+    var currSelectedSpecie = currSelected.attr("data-tokens");
+    var currSelectedBreed = currSelected.val();
+
+    $('#species').val(currSelectedSpecie);
+    $('#breed').val(currSelectedBreed);
+    $("#breed-image").attr("src", breeds[currSelectedSpecie][currSelectedBreed].imgUrl);
 }
 updateBreedsSearch("all");
 
