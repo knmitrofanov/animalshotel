@@ -1,0 +1,18 @@
+extends ../shared/layout
+
+block main-content
+	form(action="hotel/add-service" method="post")
+		label(for="name") Service name
+		input(id="name" class="form-control" type="name" name="name" placeholder="Service Name")
+		br
+		
+		label(for="price") Price
+		input(id="price" class="form-control" type="number" name="price" placeholder="Service Price")
+		br
+		
+		label(for="isPerDay") Is service per day
+		input(id="isPerDay" class="form-control" type="text" name="isPerDay" placeholder="Is service per day")
+		br
+		
+		input(type="submit" class="btn btn-lg" value="Register new service")
+		
