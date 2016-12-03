@@ -8,16 +8,16 @@ module.exports = function(models) {
 		breeds(){
 			return Pet.breedsData;
 		},
-		getById(id) {
-			return new Promise(function(resolve, reject) {
-				Pet.findOne({ "_id": id }, function(err, result) {
-					if (err) {
-						return reject(err);
-					}
+		getPetById(id) {
+			return new Promise((resolve, reject) => {
+                Pet.findOne({_id: id }, (err, pet) => {
+                    if (err) {
+                        return reject(err);
+                    }
 
-					return resolve(result);
-				});
-			});
+                    return resolve(pet || null);
+                });
+            });
 		},
 		getAllPets() {
             return new Promise((resolve, reject) => {
@@ -52,17 +52,17 @@ module.exports = function(models) {
 		// 		});
 		// 	});
 		// },
-		getPets() {
-			return new Promise(function(resolve, reject) {
-				Pet
-					.find(function(err, result) {
-						if (err) {
-							return reject(err);
-						}
-						return resolve(result);
-					});
-			});
-		},
+		//getPets() {
+		//	return new Promise(function(resolve, reject) {
+		//		Pet
+		//			.find(function(err, result) {
+		//				if (err) {
+		//					return reject(err);
+		//				}
+		//				return resolve(result);
+		//			});
+		//	});
+		//},
 		create(data) {
 			return new Promise((resolve, reject) => {
 				let pet = new Pet ({

@@ -1,0 +1,15 @@
+extends ../shared/layout
+
+block main-content
+    if model
+        ul
+            li Name:   
+                span= model.name 
+            li Sex:   
+                span= model.sex
+            li Breed:   
+                img(src= model.species class="img-circle" alt="Cinque Terre" width="304" height="236")
+            li Age:    
+                span= model.age
+            li Specie:   
+                span= model.species

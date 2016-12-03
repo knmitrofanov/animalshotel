@@ -1,12 +1,7 @@
 extends ../shared/layout
 
 block main-content
-    ul.list
+    ul
         each pet in model
             li
-                a(href="/pets/" + pet.id)
-                    = pet.name
-
-
-        //-each pet in result
-        //-       h1= pet.name
+                a(href="/pets/" + pet.id)= pet.name

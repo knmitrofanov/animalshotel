@@ -15,22 +15,6 @@ function loadRegisterPage(req, res) {
 	});
 }
 
-function getAllPets(req, res) {
-	PetData.getAllPets()
-		.then(pets => {
-			return res.render("pet/list", {
-				model: pets,
-				user: req.user
-				//result: pets
-			});
-		})
-		.catch(err => {
-			res.status(400);
-			res.send("Cannot list all pets");
-			res.end();
-		});
-}
-
 function registerPet(req, res) {
 	if(!req.isAuthenticated()){
 		return res.redirect("../auth/login");
@@ -47,7 +31,7 @@ function registerPet(req, res) {
 		species: body.species,
 		age: body.age
 	};
-	
+
 	PetData
 		.create(newPetData)
 		.then(() => {
@@ -60,11 +44,43 @@ function registerPet(req, res) {
 			res.end();
 		});
 	//TODO: Update user (add new pet to his list pets)
+}
 
+function getAllPets(req, res) {
+	PetData.getAllPets()
+		.then(pets => {
+			return res.render("pet/list", {
+				model: pets,
+				user: req.user
+			});
+		})
+		.catch(err => {
+			res.status(400);
+			res.send("Cannot list all pets");
+			res.end();
+		});
+}
+
+function getPetById(req, res) {
+	let id = req.params.id;
+
+	PetData.getPetById(id)
+		.then(pet => {
+			return res.render("pet/details", {
+				model: pet,
+				user: req.user
+			});
+		})
+		.catch(err => {
+			res.status(400);
+			res.send("Cannot get this pet by Id");
+			res.end();
+		});
 }
 
 module.exports = { 
 	loadRegisterPage, 
 	registerPet,
 	getAllPets,
+	getPetById,
 };
