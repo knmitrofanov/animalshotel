@@ -19,6 +19,17 @@ module.exports = function(models) {
 				});
 			});
 		},
+		getAllPets() {
+            return new Promise((resolve, reject) => {
+                Pet.find((err, pets) => {
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    return resolve(pets);
+                });
+            });
+        },
 		// getPetByUsername(username) {
 		// 	return new Promise(function(resolve, reject) {
 		// 		User.findOne({ "username": username }, function(err, result) {
