@@ -1,0 +1,13 @@
+extends ../shared/layout
+
+block main-content
+    if model
+        ul
+            li Name:   
+                span= model.name 
+            li Address:   
+                span= model.address
+            li Phone Number:   
+                span= model.phoneNumber
+            li Specie:   
+                span= model.species

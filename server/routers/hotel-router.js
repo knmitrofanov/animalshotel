@@ -5,6 +5,7 @@ module.exports = {
         app.get("/hotel/register", controllers.hotel.loadRegisterPage);
         app.get("/hotel/add-service", controllers.hotel.loadHotelAddServicePage);
         app.get("/hotels", controllers.hotel.getAllHotels);
+        app.get("/hotels/:id", controllers.hotel.getHotelById);
 
         app.post("/hotel/register", controllers.hotel.registerHotel);
         app.post("/hotel/hotel/add-service", controllers.hotel.registerService)
