@@ -15,6 +15,22 @@ function loadRegisterPage(req, res) {
 	});
 }
 
+function getAllPets(req, res) {
+	PetData.getAllPets()
+		.then(pets => {
+			return res.render("pets/list", {
+				model: pet,
+				user: req.user
+				//result: pets
+			});
+		})
+		.catch(err => {
+			res.status(400);
+			res.send("Cannot list all pets");
+			res.end();
+		});
+}
+
 function registerPet(req, res) {
 	if(!req.isAuthenticated()){
 		return res.redirect("../auth/login");
@@ -50,4 +66,5 @@ function registerPet(req, res) {
 module.exports = { 
 	loadRegisterPage, 
 	registerPet,
+	getAllPets,
 };
