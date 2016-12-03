@@ -18,8 +18,8 @@ function loadRegisterPage(req, res) {
 function getAllPets(req, res) {
 	PetData.getAllPets()
 		.then(pets => {
-			return res.render("pets/list", {
-				model: pet,
+			return res.render("pet/list", {
+				model: pets,
 				user: req.user
 				//result: pets
 			});
@@ -44,10 +44,11 @@ function registerPet(req, res) {
 		weight: body.weight,
 		sex: body.sex,
 		breed: body.breed,
-		species: body.species,
+		// species: body.species,
 		age: body.age
 	};
-
+	console.log(PetData);
+	console.log(newPetData);
 	PetData
 		.create(newPetData)
 		.then(() => {
