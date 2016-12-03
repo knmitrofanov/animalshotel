@@ -11,7 +11,7 @@ block main-content
 		br
 		
 		label(for="phoneNumber") Phone Number
-		input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="Phone Number" pattern=/^(0[1-9]|1[012])\-(19|20)\d{2}$/ value="0889 666 999")
+		input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="Phone Number" value="359666666" pattern=/([\d ]?)/)
 		br
 		
 		label(for="species") Select breed
@@ -25,26 +25,26 @@ block main-content
 		.form-group(style="padding-bottom:30px;")
 			label.col-xs-8.control-label Add
 			.col-xs-15
-				input.form-control(type="text", name="service[0].name", placeholder="Task name", value="Daily care")
+				input.form-control(type="text", name="service[0].[name]", placeholder="Task name", value="Daily care")
 			.col-xs-50
-				input.form-control(type="text", name="service[0].detailedInfo", placeholder="Task name", value="Daily care from 7 a.m to 20 p.m. ")
+				input.form-control(type="text", name="service[0].[detailedInfo]", placeholder="Task name", value="Daily care from 7 a.m to 20 p.m. ")
 			.col-xs-8
-				input.form-control(type="text", name="service[0].isPerDay", placeholder="Price per day or per times per day", value="true")
+				input.form-control(type="text", name="service[0].[isPerDay]", placeholder="Price per day or per times per day", value="true")
 			.col-xs-8
-				input.form-control(type="text", name="service[0].price", placeholder="Price", value="7")
+				input.form-control(type="number", name="service[0].[price]", placeholder="Price", value="7")
 			.col-xs-2
 				button.btn.btn-default.addButton(type="button")
 					i.glyphicon.glyphicon-plus
 		// The template for adding new field
 		#serviceTemplate.form-group.hide(style="padding-bottom:30px;")
 			.col-xs-15.col-xs-offset-8
-				input.form-control(type="text", name="name", placeholder="Task name", value="Daily care")
+				input.form-control(type="text", name="name", placeholder="Task name", value="Daily care", disabled)
 			.col-xs-50
-				input.form-control(type="text", name="detailedInfo", placeholder="Task name", value="Daily care from 7 a.m to 20 p.m. ")
+				input.form-control(type="text", name="detailedInfo", placeholder="Task name", value="Daily care from 7 a.m to 20 p.m. ", disabled)
 			.col-xs-8
-				input.form-control(type="text", name="isPerDay", placeholder="Price per day or per times per day", value="true")
+				input.form-control(type="text", name="isPerDay", placeholder="Price per day or per times per day", value="true", disabled)
 			.col-xs-8
-				input.form-control(type="text", name="price", placeholder="Price", value="8")
+				input.form-control(type="number", name="price", placeholder="Price", value="8", disabled)
 			.col-xs-2
 				button.btn.btn-default.removeButton(type="button")
 					i.glyphicon.glyphicon-minus

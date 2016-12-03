@@ -141,10 +141,10 @@ $(document).ready(function() {
 
 			// Update the name attributes
 			$clone
-				.find('[name="name"]').attr('name', 'service[' + serviceIndex + '].name').end()
-				.find('[name="detailedInfo"]').attr('name', 'service[' + serviceIndex + '].detailedInfo').end()
-				.find('[name="isPerDay"]').attr('name', 'service[' + serviceIndex + '].isPerDay').end()
-				.find('[name="price"]').attr('name', 'service[' + serviceIndex + '].price').end();
+				.find('[name="name"]').attr('name', 'service[' + serviceIndex + '].[name]').prop('disabled', false).end()
+				.find('[name="detailedInfo"]').attr('name', 'service[' + serviceIndex + '].[detailedInfo]').prop('disabled', false).end()
+				.find('[name="isPerDay"]').attr('name', 'service[' + serviceIndex + '].[isPerDay]').prop('disabled', false).end()
+				.find('[name="price"]').attr('name', 'service[' + serviceIndex + '].[price]').prop('disabled', false).end();
 
 			// Add new fields
 			// Note that we also pass the validator rules for new field as the third parameter
