@@ -44,11 +44,10 @@ function registerPet(req, res) {
 		weight: body.weight,
 		sex: body.sex,
 		breed: body.breed,
-		// species: body.species,
+		species: body.species,
 		age: body.age
 	};
-	console.log(PetData);
-	console.log(newPetData);
+	
 	PetData
 		.create(newPetData)
 		.then(() => {
