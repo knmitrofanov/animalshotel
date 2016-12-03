@@ -9,30 +9,32 @@ head
 	link(rel="stylesheet" href="../css/app.css")
 body
 	header.nav
-	.container
-		.navbar-header
-			a.navbar-brand(href="/") 
-				img.logo(src="../img/logo.png")
-		.navbar-collapse.collapse
-			ul.nav.navbar-nav
-				li
-					a(href="/") Home
-				li
-					a(href="/pets") All Pets
-				if (user)
+		nav.navbar.navbar-default
+			.container-fluid
+				.navbar-header
+					a.navbar-brand(href="/") 
+						img.logo(src="../img/logo.png")
+				ul.nav.navbar-nav
 					li
-						a(href="/auth/profile") #{user.username}
+						a(href="/") Home
 					li
-						a(href="/auth/logout") Logout
-					li
-						a(href="/pet/register") Add pet
-					li
-						a(href="/hotel/register") Add hotel
-				if (!user)
-					li
-						a(href="/auth/register") Register
-					li
-						a(href="/auth/login") Login
+						a(href="/pets") All Pets
+					if (user)
+						li
+							a(href="/pet/register") Add pet
+						li
+							a(href="/hotel/register") Add hotel
+				ul.nav.navbar-nav.navbar-right
+					if (user)
+						li
+							a(href="/auth/profile") #{user.username}
+						li
+							a(href="/auth/logout") Logout
+					if (!user)
+						li
+							a(href="/auth/register") Register
+						li
+							a(href="/auth/login") Login
 
 	.container
 		if (errorMessage)
