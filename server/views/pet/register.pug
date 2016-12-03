@@ -1,7 +1,7 @@
 extends ../shared/layout
 
 block main-content
-	form#pet-register(method="post")
+	form#pet-register.form-horizontal(method="post")
 		label(for="name") Pet name
 		input(id="name" class="form-control" type="name" name="name" placeholder="Pet Name" value="Tobi" required)
 		br

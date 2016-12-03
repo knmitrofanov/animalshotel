@@ -29,6 +29,7 @@ function registerHotel(req, res) {
         return res.redirect("../auth/login");
     }
     const body = req.body;
+    console.log(body);
     var user = req.user;
 
     let newHotelData = {

@@ -30,6 +30,7 @@ module.exports = function(models) {
 			return new Promise((resolve, reject) => {
 				let service = new Service ({
 					name: data.name,
+					detailedInfo: data.detailedInfo,
                     hotelId: data.hotelId,
                     price: data.price,
                     isPerDay: data.isPerDay

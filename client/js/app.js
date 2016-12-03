@@ -79,8 +79,99 @@ if($("form#hotel-register").length !== 0){
 
 //~~Pet registration END~~
 
-//~~Pet other START~~
+//~~Pet hotel START~~
+$(document).ready(function() {
+	var titleValidators = {
+			row: '.col-xs-33',   // The title is placed inside a <div class="col-xs-4"> element
+			validators: {
+				notEmpty: {
+					message: 'The title is required'
+				}
+			}
+		},
+		isbnValidators = {
+			row: '.col-xs-33',
+			validators: {
+				notEmpty: {
+					message: 'The ISBN is required'
+				}
+				// isbn: {
+				// 	message: 'The ISBN is not valid'
+				// }
+			}
+		},
+		priceValidators = {
+			row: '.col-xs-2',
+			validators: {
+				notEmpty: {
+					message: 'The price is required'
+				},
+				numeric: {
+					message: 'The price must be a numeric number'
+				}
+			}
+		},
+		serviceIndex = 0;
+
+	$('#hotel-register')
+		// .formValidation({
+		// 	framework: 'bootstrap',
+		// 	icon: {
+		// 		valid: 'glyphicon glyphicon-ok',
+		// 		invalid: 'glyphicon glyphicon-remove',
+		// 		validating: 'glyphicon glyphicon-refresh'
+		// 	},
+		// 	fields: {
+		// 		'service[0].title': titleValidators,
+		// 		'service[0].isbn': isbnValidators,
+		// 		'service[0].price': priceValidators
+		// 	}
+		// })
+
+		// Add button click handler
+		.on('click', '.addButton', function() {
+			serviceIndex++;
+			var $template = $('#serviceTemplate'),
+				$clone    = $template
+								.clone()
+								.removeClass('hide')
+								.removeAttr('id')
+								.attr('data-service-index', serviceIndex)
+								.insertBefore($template);
+
+			// Update the name attributes
+			$clone
+				.find('[name="name"]').attr('name', 'service[' + serviceIndex + '].name').end()
+				.find('[name="detailedInfo"]').attr('name', 'service[' + serviceIndex + '].detailedInfo').end()
+				.find('[name="isPerDay"]').attr('name', 'service[' + serviceIndex + '].isPerDay').end()
+				.find('[name="price"]').attr('name', 'service[' + serviceIndex + '].price').end();
+
+			// Add new fields
+			// Note that we also pass the validator rules for new field as the third parameter
+			// $('#hotel-register')
+			// 	.formValidation('addField', 'service[' + serviceIndex + '].title', titleValidators)
+			// 	.formValidation('addField', 'service[' + serviceIndex + '].isbn', isbnValidators)
+			// 	.formValidation('addField', 'service[' + serviceIndex + '].price', priceValidators);
+		})
+
+		// Remove button click handler
+		.on('click', '.removeButton', function() {
+			var $row  = $(this).parents('.form-group'),
+				index = $row.attr('data-service-index');
+
+			// Remove fields
+			// $('#hotel-register')
+			// 	.formValidation('removeField', $row.find('[name="service[' + index + '].title"]'))
+			// 	.formValidation('removeField', $row.find('[name="service[' + index + '].isbn"]'))
+			// 	.formValidation('removeField', $row.find('[name="service[' + index + '].price"]'));
+
+			// Remove element containing the fields
+			$row.remove();
+		});
+});
+		
 
 
-//~~Pet other END~~
+
+//~~Pet hotel END~~
 //~~Pet END~~

@@ -2,29 +2,54 @@ extends ../shared/layout
 
 block main-content
 	form#hotel-register(method="post")
-		label(for="name") Hotel name
-		input(id="name" class="form-control" type="name" name="name" placeholder="Hotel Name")
+		label(for="name") Hotel Name
+		input(id="name" class="form-control" type="name" name="name" placeholder="Hotel Name" value="Paw Hotter 4 STARS")
 		br
 		
 		label(for="address") Address
-		input(id="address" class="form-control" type="name" name="address" placeholder="Hotel address")
+		input(id="address" class="form-control" type="name" name="address" placeholder="Hotel address" value="Sofia, bul. stars 101")
 		br
 		
-		label(for="phoneNumber") Address
-		input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="Phone Number" pattern=/^(0[1-9]|1[012])\-(19|20)\d{2}$/)
+		label(for="phoneNumber") Phone Number
+		input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="Phone Number" pattern=/^(0[1-9]|1[012])\-(19|20)\d{2}$/ value="0889 666 999")
 		br
 		
 		label(for="species") Select breed
-		.flex-wrapper(role='group', aria-label='...')
+		.flex-wrapper(role="group", aria-label="...")
 			each breed in breeds.petsSpecies
 				button.btn.btn-margin.pets-species.flex-auto(type="button" value=breed)=breed		
 		input(type="hidden" id="species" name="species" value="dogs" required)
 		
 		br
-		div
-			a(href="add-service") Add New Service
+		label(for="services") Services	
+		.form-group(style="padding-bottom:30px;")
+			label.col-xs-8.control-label Add
+			.col-xs-15
+				input.form-control(type="text", name="service[0].name", placeholder="Task name", value="Daily care")
+			.col-xs-50
+				input.form-control(type="text", name="service[0].detailedInfo", placeholder="Task name", value="Daily care from 7 a.m to 20 p.m. ")
+			.col-xs-8
+				input.form-control(type="text", name="service[0].isPerDay", placeholder="Price per day or per times per day", value="true")
+			.col-xs-8
+				input.form-control(type="text", name="service[0].price", placeholder="Price", value="7")
+			.col-xs-2
+				button.btn.btn-default.addButton(type="button")
+					i.glyphicon.glyphicon-plus
+		// The template for adding new field
+		#serviceTemplate.form-group.hide(style="padding-bottom:30px;")
+			.col-xs-15.col-xs-offset-8
+				input.form-control(type="text", name="name", placeholder="Task name", value="Daily care")
+			.col-xs-50
+				input.form-control(type="text", name="detailedInfo", placeholder="Task name", value="Daily care from 7 a.m to 20 p.m. ")
+			.col-xs-8
+				input.form-control(type="text", name="isPerDay", placeholder="Price per day or per times per day", value="true")
+			.col-xs-8
+				input.form-control(type="text", name="price", placeholder="Price", value="8")
+			.col-xs-2
+				button.btn.btn-default.removeButton(type="button")
+					i.glyphicon.glyphicon-minus
 		br
 		br
-		br
+
 
 		input(type="submit" class="btn btn-lg" value="Register new hotel")
