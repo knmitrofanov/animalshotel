@@ -45,5 +45,17 @@ module.exports = function (models) {
 				});
 			});
 		},
+		update(id, update, options) {
+		    return new Promise((resolve, reject) => {
+		        Hotel.findOneAndUpdate({ "_id": id }, update,
+		            (err, hotel) => {
+		                if (err) {
+		                    return reject(err);
+		                }
+
+		                return resolve(hotel);
+		            });
+		    });
+		}
     }
 }

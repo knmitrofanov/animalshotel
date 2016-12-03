@@ -13,4 +13,4 @@ const serviceSchema = mongoose.Schema({
 });
 
 const Service = mongoose.model("service", serviceSchema);
-module.exports =ServiceHotel;
+module.exports = Service;

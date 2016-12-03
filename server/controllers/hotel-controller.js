@@ -29,7 +29,6 @@ function registerHotel(req, res) {
         return res.redirect("../auth/login");
     }
     const body = req.body;
-    console.log(body);
     var user = req.user;
 
     let newHotelData = {
@@ -39,17 +38,87 @@ function registerHotel(req, res) {
         phoneNumber: body.phoneNumber,
         species: body.species
     };
-
-    HotelData
+    HotelData   
         .create(newHotelData)
-        .then(() => {
-            res.redirect("/");
+        .then((newHotel) => {
+            let newHotelId = newHotel._id;
+            let servicesLeftToAdd = body.service.length;
+            for(var serviceId in body.service){
+                var service = body.service[serviceId];
+                let newServiceToAdd = {
+                    name: service.name,
+                    detailedInfo: service.detailedInfo,
+                    isPerDay: service.isPerDay,
+                    hotelId: newHotel._id,
+                    price: service.price,
+                };
+                ServiceData
+                    .create(newServiceToAdd)
+                    .then((newService)  => {
+                        HotelData   
+                            .getById(newService.hotelId)
+                            .then((hotelToUpdate) => {
+                                hotelToUpdate.services.push(newService);//FKING ASYNCH S**Ts
+                                HotelData.update(hotelToUpdate._id, { $set: { services: hotelToUpdate.services }})
+                                    .then(()=>{
+                                        servicesLeftToAdd--;
+                                        if(servicesLeftToAdd === 0){
+                                            HotelData   
+                                                .getById(newHotelId)
+                                                .then((thisHotel)=> {
+                                                    res.send(thisHotel);
+                                                });
+                                        }
+                                    })
+                                    .catch((err) => {
+                                        res.status(500).send(500, "Hotel update failed\r\n");
+                                        res.end();
+                                    });
+                            })
+                    })
+                    .catch((err) => {
+                        res.status(500);
+                        res.send(500, "Service problem failed\r\n");
+                        res.end();
+                    });
+
+
+                        // servicisToAdd.push(newService);
+                        // var hotelUpdate = HotelData.get
+                        // HotelData
+                        //     .update(newHotel._id, newHotel)
+                        //     .then((newHotel) => {
+                        //         res.send(newHotel); //dont change till there is /hotel/info.pug 
+                        //     })
+                        //     .catch((err) => {
+                        //         res.status(500).send(500, "Service problem failed\r\n");
+                        //         res.end();
+                        //     });;
+                        // // then((servicisToAdd, servicisToAdd2) =>{
+                        //     newHotel.services = servicisToAdd;
+                            
+
+                    
+            }
+
+            // newHotel.services = servicisToAdd;
+            // HotelData
+            //     .update(newHotel._id, newHotel)
+            //     .then((newHotel) => {
+            //         res.redirect(JSON.stringify(newHotel)); //dont change till there is /hotel/info.pug 
+            //     })
+            //     .catch((err) => {
+            //         res.status(500).send(500, "Service problem failed\r\n");
+            //         res.end();
+            //     });;
         })
         .catch((err) => {
-            res.status(500);
-            res.send(500, "Registration failed\r\n");
+            res.status(500).send(500, "Registration failed\r\n");
             res.end();
         });
+
+    
+    
     //TODO: Update user (add new hotel to his list hotels)
 }
 
