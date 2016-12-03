@@ -1,0 +1,7 @@
+extends ../shared/layout
+
+block main-content
+    ul
+        each hotel in model
+            li
+                a(href="/hotels/" + hotel.id)= hotel.name

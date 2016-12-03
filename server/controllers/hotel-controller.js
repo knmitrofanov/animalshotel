@@ -153,7 +153,7 @@ function registerService(req, res) {
 }
 
 function getAllHotels(req, res) {
-	HotelData.getAllHotels()
+	HotelData.getAll()
 		.then(hotels => {
 			return res.render("hotel/list", {
 				model: hotels,
@@ -167,9 +167,28 @@ function getAllHotels(req, res) {
 		});
 }
 
+function getHotelById(req, res) {
+	let id = req.params.id;
+
+	HotelData.getById(id)
+		.then(hotel => {
+			return res.render("hotel/details", {
+				model: hotel,
+				user: req.user
+			});
+		})
+		.catch(err => {
+			res.status(400);
+			res.send("Cannot get this hotel by Id");
+			res.end();
+		});
+}
+
 module.exports = {
     loadRegisterPage,
     loadHotelAddServicePage,
     registerHotel,
     registerService,
+    getAllHotels,
+    getHotelById,
 };

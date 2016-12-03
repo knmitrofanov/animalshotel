@@ -5,7 +5,7 @@ module.exports = function (models) {
     let Hotel = models.hotel
 
     return {
-        getHotelById(id) {
+        getById(id) {
            return new Promise(function(resolve, reject) {
 				Hotel.findOne({ "_id": id }, function(err, result) {
 					if (err) {
