@@ -47,7 +47,7 @@ function registerPet(req, res) {
 }
 
 function getAllPets(req, res) {
-	PetData.getAllPets()
+	PetData.getPets()
 		.then(pets => {
 			return res.render("pet/list", {
 				model: pets,
@@ -64,7 +64,7 @@ function getAllPets(req, res) {
 function getPetById(req, res) {
 	let id = req.params.id;
 
-	PetData.getPetById(id)
+	PetData.getById(id)
 		.then(pet => {
 			return res.render("pet/details", {
 				model: pet,

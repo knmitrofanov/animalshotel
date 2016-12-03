@@ -8,7 +8,7 @@ module.exports = function(models) {
 		breeds(){
 			return Pet.breedsData;
 		},
-		getPetById(id) {
+		getById(id) {
 			return new Promise((resolve, reject) => {
                 Pet.findOne({_id: id }, (err, pet) => {
                     if (err) {
@@ -19,7 +19,7 @@ module.exports = function(models) {
                 });
             });
 		},
-		getAllPets() {
+		getPets() {
             return new Promise((resolve, reject) => {
                 Pet.find((err, pets) => {
                     if (err) {

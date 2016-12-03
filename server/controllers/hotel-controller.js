@@ -152,6 +152,21 @@ function registerService(req, res) {
 	//TODO: Update user (add new hotel to his list hotels)
 }
 
+function getAllHotels(req, res) {
+	HotelData.getAllHotels()
+		.then(hotels => {
+			return res.render("hotel/list", {
+				model: hotels,
+				user: req.user
+			});
+		})
+		.catch(err => {
+			res.status(400);
+			res.send("Cannot list all hotels");
+			res.end();
+		});
+}
+
 module.exports = {
     loadRegisterPage,
     loadHotelAddServicePage,
