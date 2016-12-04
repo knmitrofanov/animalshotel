@@ -2,9 +2,10 @@ extends ../shared/layout
 
 block main-content
     | Total count of pets:   
-    h1= model.length
+    span.float-xs-right= model.length
 
-    ul
+    ul.list-group
         each pet in model
             li
-                a(href="/pets/" + pet.id)= pet.name
+                br
+                a.btn.btn-success(href="/pets/" + pet.id)= pet.name

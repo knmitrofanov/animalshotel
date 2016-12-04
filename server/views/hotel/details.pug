@@ -2,12 +2,12 @@ extends ../shared/layout
 
 block main-content
     if model
-        ul
-            li Name:   
+        ul.list-group
+            li.list-group-item-success Name:   
                 span= model.name 
-            li Address:   
+            li.list-group-item-info Address:   
                 span= model.address
-            li Phone Number:   
+            li.list-group-item-warning Phone Number:   
                 span= model.phoneNumber
-            li Specie:   
+            li.list-group-item-danger Specie:   
                 span= model.species
