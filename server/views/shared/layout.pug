@@ -8,7 +8,10 @@ head
 	link(rel="stylesheet" href="../css/site.css")
 	link(rel="stylesheet" href="../css/app.css")
 body
+.wrappar
 	header.nav
+		a(href="/")
+		img.logo-head(src="../img/logo.png")
 		nav.navbar.navbar-default
 			.container-fluid
 				.navbar-header
@@ -44,7 +47,7 @@ body
 
 		block main-content
 
-	footer.footer.navbar-fixed-bottom
+	footer.footer
 		p footeeeer
 
 	include scripts
