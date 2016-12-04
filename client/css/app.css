@@ -17,21 +17,21 @@ h3 {
 }
 
 body {
-    background: #4f3a2b;
+    background: #9e9e9e;
 }
 
 .wrappar {
     margin-left: 10%;
     width: 80%;
     height: 100%;
-    background: #291c14;
-    color: #fff;
+    background: #f0f0f0;
+    color: #000;
     /*border: 1px solid black;*/
 }
 
 ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 
 ul {
@@ -54,7 +54,7 @@ img {
 
 header {
     text-align: center;
-    background: #4f3a2b;
+    background: #9e9e9e;
 }
 
 .flex-wrapper {
