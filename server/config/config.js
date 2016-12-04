@@ -2,7 +2,7 @@ let path = require('path');
 let rootPath = path.normalize(__dirname + '/../../');
 
 const connectionStrings = {
-    production: 'mongodb://ilian82:123456@ds113958.mlab.com:13958/proba-db',
+    production: 'mongodb://admin:123456@ds119548.mlab.com:19548/animalshotel',
     development: 'mongodb://localhost:27017/animalshotel'
 };
 
