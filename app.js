@@ -10,5 +10,6 @@ const http = require("http").Server(app);
 
 //require("./server/routers")(app, config, userValidator);
 
-app.listen(config.port);
-console.log("Server running on port: " + config.port);
+app.listen(process.env.PORT || 3000, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
