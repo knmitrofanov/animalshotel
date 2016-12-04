@@ -1,6 +1,9 @@
 extends ../shared/layout
 
 block main-content
+    | Total count of pets:   
+    h1= model.length
+
     ul
         each pet in model
             li
