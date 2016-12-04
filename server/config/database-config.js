@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     initializeConnection: function (config) {
-        mongoose.connect(config.db);
+        mongoose.connect(config.connectionString);
         let db = mongoose.connection;
 
         db.once('open', function(err) {
