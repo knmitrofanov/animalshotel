@@ -15,6 +15,6 @@ module.exports = {
     production: {
         rootPath: rootPath,
         db: connectionStrings.production,
-        port: process.env.PORT
+        port: process.env.PORT || 3000
     }
 };

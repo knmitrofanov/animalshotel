@@ -21,7 +21,7 @@ const controllers = require("../controllers");
 module.exports = {
     port: process.env.PORT || config.port,
     rootPath: rootPath,
-    setupConfigurations: function(app, rootPath){
+    setupConfigurations: function(app, rootPath) {
         //database
         databaseConfig.initializeConnection(config);
 
@@ -29,7 +29,7 @@ module.exports = {
         expressConfig.initializeExpressViewEngine(app, rootPath);
         expressConfig.initializePublicFilesPath(app, rootPath);
         expressConfig.initializeMiddlewares(app);
-        
+
         //passport
         passportConfig.initializeLocalStrategy();
         passportConfig.setSerializationProcedure();
