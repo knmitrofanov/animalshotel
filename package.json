@@ -2,9 +2,9 @@
     "name": "y",
     "version": "1.0.0",
     "description": "",
-    "main": "y",
+    "main": "app.js",
     "scripts": {
-        "start": "node app",
+        "start": "node app.js",
         "build": "babel-node gulp build",
         "test": "./node_modules/.bin/mocha tests tests/**/*.js"
     },
