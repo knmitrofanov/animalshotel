@@ -1,0 +1,20 @@
+{
+  "name": "animalshotel",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "D-Team"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ilian1902/Team-D-Animals-Hotel",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
